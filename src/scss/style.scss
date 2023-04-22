@@ -1,0 +1,501 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,regular,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=DM+Sans:regular,italic,500,500italic,700,700italic');
+@import url('https://fonts.googleapis.com/css?family=Karla:200,300,regular,500,600,700,800,200italic,300italic,italic,500italic,600italic,700italic,800italic');
+@import url('https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic');
+
+// mixins
+    @mixin button($bg, $color, $width, $height, $border, $radius, $shadow) {
+        background: $bg;
+        color: $color;
+        width: $width;
+        height: $height;
+        border: $border;
+        border-radius: $radius;
+        box-shadow: $shadow;
+        cursor: pointer;
+    }
+    @mixin container() {
+        width: 1180px;
+        height: 100%;
+        display: flex;
+        padding: 0 20px 0 20px;
+    }
+    @mixin block($height) {
+        width: 100%;
+        height: $height;
+        display: flex;
+        justify-content: center;
+    }
+    @mixin text($fontSize, $color, $fontWeight, $fontFamily, $lineHeight) {
+        font-size: $fontSize;
+        color: $color;
+        font-weight: $fontWeight;
+        font-family: $fontFamily;
+        line-height: $lineHeight;
+    }
+// mixins
+
+.burger{
+    width: 35px;
+    height: 29.5px;
+    background-image: url('../img/burger.webp');
+    background-size: cover;
+    display: none;
+    @media (max-width: 768px) {
+        display: flex;
+    }
+}
+
+
+
+// styles
+
+.header{
+    @include block(52px);
+    position: absolute;
+    margin-top: 25px;
+    z-index: 2;
+    &__container{
+        @include container();
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__logo{
+        @include text(24px, #000, 600, 'Quicksand', normal);
+    }
+    &__options{
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        @media (max-width: 768px) {
+            ul{
+                display: none;
+            }
+            gap: 20px;
+        }
+        ul{
+            gap: 50px;
+            li{
+                cursor: pointer;
+                &:hover{
+                    color: #6222CC;
+                }
+                @include text(16px, #494666, 500, 'Quicksand', normal);
+            }
+        }
+        button{
+            @include button(linear-gradient(278.54deg, #6714EF 3.14%, #9F43F1 96.34%), #fff, 127px, 52px, none, 87px, 1px 8px 32px rgba(101, 28, 206, 0.58));
+            @include text(16px, #fff, 500, 'Quicksand', normal);
+        }
+    }
+}
+
+// 480 576 768 1024
+
+.home{
+    @include block(980px);
+    @media (max-width: 768px) {
+        height: 780px;
+    }
+    @media (max-width: 576px) {
+        height: 100vh;
+    }
+    &__container{
+        @include container();
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        @media (max-width: 1024px) {
+                justify-content: center;
+                img{
+                    display: none;
+                }
+                p{
+                    text-align: center;
+                }
+        }
+        img{
+            width: 500px;
+            position: absolute;
+            right: 0;
+        }
+    }
+    &__text{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        @media (max-width: 1024px) {
+            align-items: center;
+            h1{
+                text-align: center
+            }
+        }
+        h1{
+            @include text(72px, #1E103E, 700, 'Poppins', 114%);
+            @media (max-width: 576px) {
+                font-size: 52px;
+            }
+            @media (max-width: 480px) {
+                font-size: 42px;
+            }
+        }
+        p{
+            @include text(18px, #00062F, 400, 'DM Sans', normal);
+            opacity: .8;
+        }
+        button{
+            @include button(linear-gradient(278.54deg, #6714EF 3.14%, #9F43F1 96.34%), #fff, 189px, 52px, none, 87px, 1px 8px 32px rgba(101, 28, 206, 0.58));
+            @include text(16px, #fff, 500, 'Quicksand', normal);
+        }
+    }
+}
+
+.innovations{
+    @include block(700px);
+    background-color: #F3F5F7;
+    @media (max-width: 768px) {
+        height: 1000px;
+    }
+    @media (max-width: 1024px) {
+        height: auto;
+        padding: 50px 0;
+    }
+    &__container{
+        @include container();
+        align-items: center;
+        justify-content: space-between;
+        @media (max-width: 1024px) {
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            h1{
+                text-align: center;
+            }
+            p{
+                text-align: center;
+            }
+        }
+    }
+    &__text{
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+        h1{
+            @include text(48px, #1E103E, 700, 'Quicksand', 70px);
+            span{
+                @include text(48px, #1E103E, 400, 'Quicksand', 70px);
+            }
+        }
+        p{
+            @include text(14px, #00062F, 400, 'DM Sans', 22px);
+        }
+        @media (max-width: 576px) {
+            h1{
+                font-size: 28px;
+                span{
+                    font-size: 28px;
+                }
+            }
+            p{
+                font-size: 13px;
+            }
+        }
+    }
+    &__items{
+        width: 520px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        @media (max-width: 576px) {
+            width: 100%;
+            height: auto;
+            flex-direction: column;
+            align-items: center;
+        }
+        &-item{
+            width: calc(50% - 15px);
+            margin: 5px 0 5px 0;
+            height: 240px;
+            border-radius: 10px;
+            background-color: #fff;
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            @media (max-width: 576px) {
+                width: 70%;
+            }
+            h2{
+                @include text(18px, #1E103E, 700, 'Quicksand', normal);
+            }
+            p{
+                @include text(14px, #00062F, 400, 'DM Sans', 22px);
+            }
+            button{
+                @include button(unset, #444, 115px, 35px, none, 0px, none);
+                border-bottom: 1px solid #FC195A;
+                padding: 0 0 3px 0;
+                font-family: 'DM Sans';
+                box-sizing: border-box;
+            }
+        }
+    }
+}
+
+.solutions{
+    @include block(650px);
+    @media (max-width: 1024px) {
+        height: auto;
+        padding: 50px 0;    
+    }
+    &__container{
+        @include container();
+        align-items: center;
+        justify-content: flex-end;
+        gap: 85px;
+        img{
+            width: 430px;
+            height: 535px;
+        }
+        @media (max-width: 1024px) {
+            justify-content: center;
+            align-items: center;
+            img{
+                display: none
+            }
+            .solutions__text{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center
+            }
+        }
+    }
+    &__text{
+        h2{
+            @include text(18px, #FC195A, 700, 'Inter', 32px);
+            margin-bottom: 14px;
+        }
+        h1{
+            @include text(48px, #2E2E2E, 700, 'Quicksand', 50px);
+            margin-bottom: 32px;
+        }
+        p{
+            @include text(16px, #00062F, 400, 'DM Sans', 28px);
+            margin-bottom: 14px;
+        }
+        @media (max-width: 576px) {
+            h1{
+                font-size: 28px;
+            } 
+            p{
+                font-size: 13px;
+            }
+        }
+        .row{
+            display: flex;
+            gap: 60px;
+            h3{
+                @include text(40px, #FC195A, 700, 'DM Sans', 50px);
+                @media (max-width: 576px) {
+                    font-size: 30px;
+                }
+            }
+            p{
+                margin: 0;
+            }
+            div{
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                &:last-child{
+                    h3{
+                        color: #6D1AF0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.gallery{
+    @include block(915px);
+    @media (max-width: 576px) {
+        height: auto;
+        padding: 50px 0;
+    }
+    &__container{
+        @include container();
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 45px;
+        h1{
+            @include text(48px, #1E103E, 700, 'Quicksand', 60px);
+            text-transform: capitalize;
+            @media (max-width: 576px) {
+                font-size: 28px;
+            }
+        }
+        img{
+            width: 875px;
+            @media (max-width: 1024px) {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.getstarted{
+    @include block(435px);
+    background-color: #6222CC;
+    &__container{
+        @include container();
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        h1{
+            @include text(48px, #fff, 700, 'Quicksand', 60px);
+        }
+        p{
+            text-align: center;
+            text-transform: lowercase;
+            @include text(16px, #fff, 400, 'DM Sans', 180%);
+            margin-top: 16px;
+        }
+        button{
+            @include button(#FC195A, #fff, 188px, 46px, none, 30px, none);
+            font-family: 'Inter';
+            font-size: 16px;
+            margin-top: 50px;
+        }
+        @media (max-width: 576px) {
+            h1{
+                font-size: 28px;
+            }
+            p{
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+
+.articles{
+    @include block(850px);
+    @media (max-width: 768px) {
+        height: 700px;
+    }
+    @media (max-width: 576px) {
+        height: auto;
+        padding: 50px 0;
+    }
+    &__container{
+        @include container();
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        h2{
+            @include text(18px, #6222CC, 700, 'Quicksand', 32px);
+        }
+        .row{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            h1{
+                @include text(48px, #333, 700, 'Quicksand', 60px);
+                @media (max-width: 576px) {
+                    font-size: 28px;
+                }
+            }
+            button{
+                @include button(#fff, #333, 155px, 48px, 1px solid rgba(53, 52, 72, 0.236809), 24px, none);
+                font-family: 'Karla';
+                font-weight: 700;
+            }
+            &:last-child{
+                margin-top: 65px;
+                div{
+                    width: calc(33.333% - 20px);
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    img{
+                        width: 100%;
+                    }
+                    p{
+                        &:last-child{
+                            color: rgba(51, 51, 51, 0.496405);
+                        }
+                        @include text(16px, #333, 400, 'DM Sans', 32px);
+                    }
+                    h3{
+                        @include text(22px, #333, 700, 'Quicksand', 32px);
+                    }
+                    @media (max-width: 768px) {
+                        p{
+                            font-size: 12px;
+                        }
+                        h3{
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.footer{
+    @include block(315px);
+    background-color: #6222CC;
+    @media (max-width: 768px) {
+        height: auto;
+        padding: 50px 0;
+    }
+    &__container{
+        @include container();
+        align-items: center;
+        justify-content: space-between;
+        @media (max-width: 768px) {
+            flex-direction: column;
+            justify-content: center;
+            gap: 60px;
+        }
+        .column{
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            p{
+                @include text(16px, #fff, 400, 'Quicksand', 24px);
+            }
+            h3{
+                @include text(20px, #fff, 500, 'Quicksand', 24px);
+            }
+            @media (max-width: 576px) {
+                p{
+                    font-size: 13px;
+                    text-align: center;
+                }
+                h3{
+                    font-size: 16px;
+                    text-align: center;
+                }
+            }
+        }
+        .row{
+            display: flex;
+            gap: 70px;
+            @media (max-width: 576px) {
+                height: auto;
+                flex-direction: column;
+            }
+        }
+    }
+}
